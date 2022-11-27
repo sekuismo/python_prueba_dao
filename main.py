@@ -1,4 +1,4 @@
-from controlador.validations import validarAddCargo
+from controlador.validations import validarAddCargo,validarUpdateCargo,validarFindUser
 
 
 ##### login
@@ -20,4 +20,7 @@ from controlador.validations import validarAddCargo
 #aquí en el main tiene que haber una función que llame
 
 
-validarAddCargo()
+
+
+
+validarFindUser()

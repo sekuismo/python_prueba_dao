@@ -8,6 +8,8 @@ class Conex:
                                              user=user, \
                                              passwd=passwd, \
                                              database=database)
+            serverInfo = self.__myconn.get_server_info()
+            
 
         except Exception as ex:
             print(ex)
@@ -21,3 +23,5 @@ class Conex:
         return self.__myconn
 
 #print(Conex("localhost", "root", "", "mydb"))
+
+

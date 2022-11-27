@@ -19,7 +19,10 @@ class CargoDTO:
         resultado = daocargo.addCargo(num_cargo,nombre_cargo)
         return resultado
 
-
+    def updateCargo(num_cargo,nombre_cargo):
+        daocargo = DaoCargo()
+        resultado = daocargo.updateCargo(num_cargo,nombre_cargo)
+        return resultado
 
 
 

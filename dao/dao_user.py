@@ -6,7 +6,7 @@ import traceback
 class daoUser:
     def __init__(self):
         try:
-            self.conn = conn.Conex("localhost", "root", "", "testdb")
+            self.conn = conn.Conex("localhost", "root","", "testdb")
         except Exception as ex:
             print(ex)
 
