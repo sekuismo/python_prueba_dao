@@ -99,21 +99,7 @@ class DaoCargo:
                 conexion.closeConex()
         return mensaje
 
-    # def listarUsuarios(self):
 
-    #     c = self.getConex()
-    #     result = None
-    #     try:
-    #         cursor = c.getConex().cursor()
-    #         cursor.execute("select username, email, password, create_time from users")
-    #         result = cursor.fetchall()
-    #     except Exception as ex:
-    #         print(ex)
-    #     finally:
-    #         if c.getConex().is_connected():
-    #             c.closeConex()
-
-    #     return result
 
     def findAllCargos(self):
         sentencia_sql = "SELECT NUMEROCARGO, NOMBRECARGO FROM CARGO"

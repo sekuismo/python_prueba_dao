@@ -77,8 +77,7 @@ def submenuTres():
         if opcion == 7:
             validateUpdateComuna()
         if opcion == 8:
-            print('no hay nada aquí por ahora '.center(100,'-'))
-            submenuTres()
+            validateDelComuna()
         if opcion == 9:
             validateListarComunas()
         if opcion == 10:

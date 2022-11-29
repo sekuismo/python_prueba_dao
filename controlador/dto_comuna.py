@@ -14,9 +14,9 @@ class ComunaDTO:
             comuna.setIdentificaComuna(element[1])
             comuna.SetdescripcionComuna(element[2])
             comuna.setListaComuna(comuna)
-            # print(f'Número de comuna: {element[1]}')
-            # print(f'Comuna: {element[2]}')
-            return comuna.getListaComuna()
+            print(f'Número de comuna: {element[1]}')
+            print(f'Comuna: {element[2]}')
+            # return comuna.getListaComuna()
                 
     
     def buscarComuna(self,numero_comuna):
@@ -33,5 +33,8 @@ class ComunaDTO:
         daocomuna = DaoComuna()
         resultado = daocomuna.agregarComuna(numeroComuna,nombreComuna)
         return resultado
+    def delComuna(self,num_comuna):
+        daocomuna = DaoComuna()
+        daocomuna.delComuna(num_comuna)
 
     

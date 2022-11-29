@@ -5,9 +5,9 @@ from controlador.dto_comuna import ComunaDTO
 def validateListarComunas():
     comunas = ComunaDTO()
     lista = comunas.listarComuna()
-    for element in lista:
-        print(element.getIdentificaComuna())
-        print(element.getDescripcionComuna())
+    # for element in lista:
+    #     print(element.getIdentificaComuna())
+    #     print(element.getDescripcionComuna())
 
 
 def validateFindComuna():
@@ -54,3 +54,13 @@ def validarLogin():
     clave = input("Ingrese contraseña : ")
     resultado = ComunaDTO().validarLogin(username, clave)
     return resultado
+
+def validateDelComuna():
+    num_comuna = input('ingrese el número de la comuna a eliminar')
+    try:
+        num_comuna = int(num_comuna)
+        dtoComuna = ComunaDTO()
+        resultado = dtoComuna.delComuna(num_comuna)
+        print(resultado)
+    except:
+        print('algo salió mal')

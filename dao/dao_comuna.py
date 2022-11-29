@@ -86,3 +86,23 @@ class DaoComuna:
             if c.getConex().is_connected():
                 c.closeConex()
         return mensaje
+
+
+
+    def delComuna(self,num_comuna):
+        
+        sentencia_sql = "DELETE   FROM COMUNA WHERE NUMEROCOMUNA ={0} ".format(num_comuna)
+        conexion = self.getConex()
+
+        try:
+            cursor = conexion.getConex().cursor()
+            cursor.execute(sentencia_sql)
+            conexion.getConex().commit()
+            mensaje = "Comuna eliminada   correctamente"
+        except:
+            print(traceback.print_exc())
+            mensaje = "Problemas con la base de datos..vuelva a intent arlo"
+        finally:
+            if conexion.getConex().is_connected():
+                conexion.closeConex()
+        return mensaje
