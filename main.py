@@ -1,4 +1,4 @@
-from controlador.validations import validarAddCargo,validarUpdateCargo,validarFindUser
+from controlador.validations import validarAddCargo,validarUpdateCargo,validarFindUser,validarDelCargo
 
 
 ##### login
@@ -23,4 +23,4 @@ from controlador.validations import validarAddCargo,validarUpdateCargo,validarFi
 
 
 
-validarFindUser()
+validarDelCargo()

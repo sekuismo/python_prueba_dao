@@ -81,26 +81,23 @@ class DaoCargo:
                 conexion.closeConex()
         return mensaje
 
-    def delCargo(self):
-        numero_cargo = input('ingrese el número del cargo a eliminar')
-        sentencia_sql = "DELETE * FROM CARGO WHERE NUMEROCARGO = {0}".format(numero_cargo)
+    def delCargo(self,num_cargo):
+        
+        sentencia_sql = "DELETE  FROM CARGO WHERE NUMEROCARGO ={0}".format(num_cargo)
         conexion = self.getConex()
-        if self.findCargo(numero_cargo) == None:
-            print('no existe  ese cargo :(')
-            self.delCargo()
-        else:
-            try:
-                cursor = conexion.getConex().cursor()
-                cursor.execute(sentencia_sql)
-                conexion.getConex().commit()
-                mensaje = "eliminado correctamente"
 
-                print(traceback.print_exc())
-                mensaje = "Problemas con la base de datos..vuelva a intent arlo"
-            finally:
-                if conexion.getConex().is_connected():
-                    conexion.closeConex()
-            return mensaje
+        try:
+            cursor = conexion.getConex().cursor()
+            cursor.execute(sentencia_sql)
+            conexion.getConex().commit()
+            mensaje = "eliminado correctamente"
+        except:
+            print(traceback.print_exc())
+            mensaje = "Problemas con la base de datos..vuelva a intent arlo"
+        finally:
+            if conexion.getConex().is_connected():
+                conexion.closeConex()
+        return mensaje
 
 
 #importante considerar que cada método recibe parámetros , los cuales son definidos

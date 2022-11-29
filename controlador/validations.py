@@ -1,5 +1,3 @@
-
-
 from controlador.dto_cargo import CargoDTO
 
 def validarFindUser():
@@ -36,6 +34,20 @@ def validarUpdateCargo():
             print(resultado)
         except:
             print('algo falló en la actualización')
+
+def validarDelCargo():
+    try:
+        num_cargo = input('ingrese el número del cargo a eliminar')
+        num_cargo = int(num_cargo)
+        resultado = CargoDTO.delCargo(num_cargo)
+        print(resultado)
+        
+
+    except:
+        print('no funcionó bien :(')
+    
+
+
 
 # def listAll():
 #     print("Listado de Usuarios")

@@ -23,6 +23,10 @@ class CargoDTO:
         daocargo = DaoCargo()
         resultado = daocargo.updateCargo(num_cargo,nombre_cargo)
         return resultado
+    def delCargo(num_cargo):
+        daocargo = DaoCargo()
+        resultado = daocargo.delCargo(num_cargo)
+        return resultado
 
 
 
