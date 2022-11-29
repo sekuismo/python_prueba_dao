@@ -1,5 +1,6 @@
 from controlador.validations_cargo import *
 from controlador.validations_comuna import *
+# from controlador.validations_empleado import *
 
 
 def menuPrincipal():
@@ -13,7 +14,8 @@ def menuPrincipal():
         opcion =  input("Ingrese una opción : ")
         try:
             opcion = int(opcion)
-        
+            if opcion == 1:
+                print('no hay nada aquí')
             if opcion == 2:
                 subMenuDos()
             if opcion == 3:

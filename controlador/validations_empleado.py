@@ -73,7 +73,7 @@ def validateAddUser():
         direccion = input("Ingrese dirección: ")
         while (len(direccion) <= 0):
             direccion = input("Ingrese una dirección válida: ")
-        print(UserDTO().agregarUsuario(run, nombre, apellido, cargoN = None, direccion, clave, email, comunaN = None))
+        print(EmpleadoDTO().agregarUsuario(run, nombre, apellido, cargoN = None, direccion, clave, email, comunaN = None))
 
 def validateDelUser():
     run = input("Ingrese RUN de empleado a eliminar: ")
@@ -84,12 +84,12 @@ def validateDelUser():
     if resu is not None:
         print("Datos existentes--> ", resu)
     else:
-        print(UserDTO().eliminarEmpleado(run))
+        print(EmpleadoDTO().eliminarEmpleado(run))
 
 def validarLogin():
     run = input("Ingrese RUN de usuario: ")
     clave = input("Ingrese contraseña: ")
-    resultado = UserDTO().validarLogin(run, clave)
+    resultado = EmpleadoDTO().validarLogin(run, clave)
     return resultado
 
 

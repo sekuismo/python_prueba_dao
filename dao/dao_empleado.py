@@ -4,7 +4,7 @@ import traceback
 class daoEmpleado:
     def __init__(self):
         try:
-            self.conn = conn.Conex("localhost", "root", "", "mydb")
+            self.conn = conn.Conex("localhost", "root", "", "minimarket_fenix")
         except Exception as ex:
             print(ex)
 
