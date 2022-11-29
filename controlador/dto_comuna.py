@@ -1,12 +1,12 @@
 from modelo.comuna import Comuna
-from dao.dao_comuna import daoComuna
+from dao.dao_comuna import DaoComuna
 from utils.encoder import Encoder
 
 class ComunaDTO:
 
-    def listarComuna(self):
-        daocomuna = daoComuna()
-        resultado = daoComuna.listarComuna()
+    def listarComuna():
+        daocomuna = DaoComuna()
+        resultado = daocomuna.listarComuna()
         lista = []
         if resultado is not None:
             for u in resultado:
@@ -14,19 +14,19 @@ class ComunaDTO:
                 lista.append(Comuna)
         return lista
     
-    def buscarComuna(self, codigoComuna):
-        daocomuna = daoComuna()
-        resultado = daoComuna.buscarComuna(Comuna(codigoComuna=codigoComuna))
-        return Comuna(resultado[0], resultado[1], resultado[2]) if resultado is not None else None
-
-    def modificarComuna(self, codigoComuna, nombreComuna, descripComuna):
-        daocomuna = daoComuna()
-        resultado = daoComuna.modificarComuna(Comuna(codigoComuna=codigoComuna, nombreComuna=nombreComuna, descripComuna=descripComuna))
+    def buscarComuna(self,numero_comuna):
+        daocomuna = DaoComuna()
+        resultado = daocomuna.buscarComuna(numero_comuna)
         return resultado
 
-    def agregarComuna(self, codigoComuna, nombreComuna, descripComuna):
-        daocomuna = daoComuna()
-        resultado = daoComuna.agregarComuna(Comuna(codigoComuna=codigoComuna, nombreComuna=nombreComuna, descripComuna=descripComuna))
+    def modificarComuna(nombre_comuna,numero_comuna):
+        daocomuna = DaoComuna()
+        resultado = daocomuna.modificarComuna(nombre_comuna,numero_comuna)
+        return resultado
+
+    def agregarComuna(numeroComuna,nombreComuna):
+        daocomuna = DaoComuna()
+        resultado = daocomuna.agregarComuna(numeroComuna,nombreComuna)
         return resultado
 
     

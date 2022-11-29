@@ -18,7 +18,7 @@ class DaoComuna:
         result = None
         try:
             cursor = c.getConex().cursor()
-            cursor.execute("select codigoComuna, nombreComuna, descripComuna")
+            cursor.execute("SELECT * FROM COMUNA")
             result = cursor.fetchall()
         except Exception as ex:
             print(ex)
@@ -28,14 +28,14 @@ class DaoComuna:
 
         return result
 
-    def buscarComuna(self, comuna):
-        sql = "select codigoComuna, nombreComuna, descripComuna from comuna where nombreComuna = %s"
+    def buscarComuna(self,numero_comuna):
+        sql = "SELECT * FROM COMUNA WHERE NUMEROCOMUNA = {0}".format(numero_comuna)
         resultado = None
         c = self.getConex()
 
         try:
             cursor = c.getConex().cursor()
-            cursor.execute(sql, (user.username,))
+            cursor.execute(sql)
             resultado = cursor.fetchone()
 
         except Exception as ex:
@@ -45,13 +45,13 @@ class DaoComuna:
                 c.closeConex()
         return resultado
 
-    def modificarComuna(self, comuna):
-        sql = "update comuna set codigo=%s, password = %s where nombreComuna = %s"
+    def modificarComuna(self,nombre_comuna,numero_comuna):
+        sql = "UPDATE COMUNA SET NOMBRECOMUNA = '{0}' WHERE NUMEROCOMUNA = {1} ".format(nombre_comuna,numero_comuna)
         c = self.getConex()
         mensaje = ""
         try:
             cursor = c.getConex().cursor()
-            cursor.execute(sql, (comuna.codigoComuna, comuna.nombreComuna, comuna.descripComuna))
+            cursor.execute(sql)
             c.getConex().commit()
             filas = cursor.rowcount
             if filas > 0:
@@ -66,13 +66,13 @@ class DaoComuna:
                 c.closeConex()
         return mensaje
 
-    def agregarComuna(self,comuna):
-        sql = "insert into comuna (codigoComuna, nombreComuna, descripComuna) values (%s,%s,%s)"
+    def agregarComuna(self,numeroComuna,nombreComuna):
+        sql = "insert into comuna (IDCOMUNA,NUMEROCOMUNA,NOMBRECOMUNA) values (NULL,{0},'{1}')".format(numeroComuna,nombreComuna)
         c = self.getConex()
         mensaje = ""
         try:
             cursor = c.getConex().cursor()
-            cursor.execute(sql, (comuna.codigoComuna,comuna.nombreComuna, comuna.descripComuna))
+            cursor.execute(sql)
             c.getConex().commit()
             filas = cursor.rowcount
             if filas > 0:

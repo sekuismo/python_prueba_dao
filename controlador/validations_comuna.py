@@ -1,4 +1,8 @@
+#aquí van las validaciones de las comunas 
+
 from controlador.dto_comuna import ComunaDTO
+
+
 def listAll():
     print("Listado de Comunas")
     resultado = ComunaDTO().listarComuna()
@@ -9,45 +13,43 @@ def listAll():
         print("no hay resultados")
 
 def validateFindComuna():
-    codigoComuna = int(input("Ingrese el codigo de la comuna a buscar : "))
-    if codigoComuna < 0:
-        print("Codigo de comuna incorrecto")
-        return validateFindComuna()
-    else:
-        resu = ComunaDTO().buscarComuna(codigoComuna)
-        if resu is not None:
-            print(f"Resultado : {resu}")
+    numero_comuna = input("Ingrese el codigo de la comuna a buscar : ")
+    try:
+        numero_comuna = int(numero_comuna)
+        if numero_comuna < 0:
+            print("Codigo de comuna incorrecto")
+            return validateFindComuna()
         else:
-            print("Comuna No encontrada")
+            resu = ComunaDTO().buscarComuna(numero_comuna)
+            if resu is not None:
+                print(f"Resultado : {resu}")
+            else:
+                print("Comuna No encontrada")
+    except:
+        print('algo pasó')
 
 def validateUpdateComuna():
-    codigoComuna = int(input("Ingrese el nombre de usuario a modificar : "))
-    if codigoComuna < 0:
-        print("Debe ingresar un codigo de comuna valido")
-        return validateUpdateComuna()
-    resu = ComunaDTO().buscarComuna(codigoComuna)
-    if resu is not None:
-        print("Datos --> ", resu)
-        codigoComuna = int(input("Ingrese codigo de la comuna : ")) 
-        nombreComuna = input("Ingrese nombre de la comuna : ") 
-        descripComuna = input("Ingrese descripcion de la comuna")
-        print(ComunaDTO().actualizarComuna(codigoComuna, nombreComuna, descripComuna))
+    numero_comuna = input('ingrese el número de la comuna a modificar :')
+    nombre_comuna = input('ingrese el nuevo nombre de la comuna ')
+    try:
+        numero_comuna = int(numero_comuna)
+        resultado = ComunaDTO.modificarComuna(nombre_comuna,numero_comuna)
+        print(resultado)
 
-    else:
-        print("Usuario No encontrado")
+    except:
+        print('algo salió mal ')
 
 def validateAddComuna():
-    codigocomuna = int(input("Ingrese nombre de usuario a incorporar: "))
-    if codigocomuna < 0:
-        print("Debe ingresar un codigo valido para la comuna")
-        return validateAddComuna()
-    resu = ComunaDTO().buscarComuna(codigocomuna)
-    if resu is not None:
-        print("Datos existentes--> ", resu)
-    else:
-        nombreComuna = input("Ingrese nombre de comuna : ") 
-        descripComuna = input("Ingrese descripcion de comuna : ") 
-        print(ComunaDTO().agregarComuna(codigocomuna, nombreComuna,descripComuna))
+    codigocomuna = input("   ingrese el identificador de la comuna")
+    nombreComuna = input("   ingrese el nombre de la comuna")
+    try:
+        codigocomuna = int(codigocomuna)
+        
+        resultado = ComunaDTO.agregarComuna(codigocomuna, nombreComuna,)
+        print(resultado)
+        print('exitoso!')
+    except:
+        print('paso algo ')
 
 def validarLogin():
     username = input("Ingrese nombre de usuario : ")

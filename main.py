@@ -1,4 +1,5 @@
-from controlador.validations import validarAddCargo,validarUpdateCargo,validarFindUser,validarDelCargo
+from controlador.validations_cargo import validarAddCargo,validarUpdateCargo,validarFindUser,validarDelCargo
+from controlador.validations_comuna import validateAddComuna,validateFindComuna,validateUpdateComuna
 
 
 ##### login
@@ -23,4 +24,10 @@ from controlador.validations import validarAddCargo,validarUpdateCargo,validarFi
 
 
 
-validarDelCargo()
+# validarDelCargo()
+
+
+
+
+
+validateUpdateComuna()
