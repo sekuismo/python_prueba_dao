@@ -1,16 +1,14 @@
 #aquí van las validaciones de las comunas 
-
+from modelo.comuna import Comuna
 from controlador.dto_comuna import ComunaDTO
 
+def validateListarComunas():
+    comunas = ComunaDTO()
+    lista = comunas.listarComuna()
+    for element in lista:
+        print(element.getIdentificaComuna())
+        print(element.getDescripcionComuna())
 
-def listAll():
-    print("Listado de Comunas")
-    resultado = ComunaDTO().listarComuna()
-    if len(resultado) > 0:
-        for u in resultado:
-            print(u)
-    else:
-        print("no hay resultados")
 
 def validateFindComuna():
     numero_comuna = input("Ingrese el codigo de la comuna a buscar : ")

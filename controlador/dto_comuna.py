@@ -1,18 +1,23 @@
 from modelo.comuna import Comuna
 from dao.dao_comuna import DaoComuna
-from utils.encoder import Encoder
+
 
 class ComunaDTO:
 
-    def listarComuna():
+    def listarComuna(self):
         daocomuna = DaoComuna()
         resultado = daocomuna.listarComuna()
+        comuna = Comuna()
         lista = []
-        if resultado is not None:
-            for u in resultado:
-                Comuna = Comuna(codigoComuna=u[0], nombreComuna=u[1], descripComuna=u[2])
-                lista.append(Comuna)
-        return lista
+        
+        for element in resultado:
+            comuna.setIdentificaComuna(element[1])
+            comuna.SetdescripcionComuna(element[2])
+            comuna.setListaComuna(comuna)
+            # print(f'Número de comuna: {element[1]}')
+            # print(f'Comuna: {element[2]}')
+            return comuna.getListaComuna()
+                
     
     def buscarComuna(self,numero_comuna):
         daocomuna = DaoComuna()

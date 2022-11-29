@@ -1,6 +1,6 @@
 from modelo.cargo import Cargo
 from dao.dao_cargo import DaoCargo
-from utils.encoder import Encoder
+
 
 #hay que escribir todos los métodos
 
@@ -28,28 +28,25 @@ class CargoDTO:
         resultado = daocargo.delCargo(num_cargo)
         return resultado
 
+    def findAllCargos():
+        #se agregan los atributos de la base de datos a la clase correspondiente,
+        #Se imprime cada uno de los cargos a partir del fetchAll() y un ciclo
+        #solo se imprime  el identificador dado por el usuario y el nombre del cargo
+        try:
+            daocargo = DaoCargo()
+            cargos = daocargo.findAllCargos()
+            for element in cargos:
+                cargo = Cargo()
+                cargo.setIdenticaCargo(element[0])
+                cargo.setDescripcionCargo(element[1])
+                cargo.setLista(cargo)
+                print(f'Identificador del cargo: {element[0]}')
+                print(f'Nombre del cargo       : {element[1]}')
+
+                
+        except:
+            print('no funka :(')
 
 
 
-
-# def buscarUsuario(self, username):
-#         daouser = daoUser()
-#         resultado = daouser.buscarUsuario(User(username=username))
-#         return User(resultado[0], resultado[1], resultado[2]) if resultado is not None else None
-
-#     def validarLogin(self, username, clave):
-#         daouser = daoUser()
-#         resultado = daouser.validarLogin(User(username=username, password=Encoder().encode(clave)))
-#         return User(resultado[0]) if resultado is not None else None
-#     def actualizarUsuario(self, username, email, password):
-#         daouser = daoUser()
-#         resultado = daouser.actualizarUsuario(User(username=username, email=email, password=Encoder().encode(password)))
-#         return resultado
-#     def agregarUsuario(self, username, email, password):
-#         daouser = daoUser()
-#         resultado = daouser.agregarUsuario(User(username=username, email=email, create_time= datetime.now(), password=Encoder().encode(password)))
-#         return resultado
-
-        
-    
 

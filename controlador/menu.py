@@ -1,11 +1,13 @@
 from controlador.validations_cargo import *
+from controlador.validations_comuna import *
 
 
 def menuPrincipal():
     while True:
-        print("1 CRUD empleados".center(30,'-'))
-        print("2 CRUD cargos".center(30,'-'))
-        print("3 CRUD comunas".center(30,'-'))
+        print('Bienvenido al minimarket fenix \n \n'.center(100,' '))
+        print("1 CRUD empleados".center(100,'-'))
+        print("2 CRUD cargos".center(100,'-'))
+        print("3 CRUD comunas".center(100,'-'))
         print("4 SALIR".center(30),'-')
 
         opcion =  input("Ingrese una opción : ")
@@ -28,13 +30,13 @@ def menuPrincipal():
 
 
 def subMenuDos():
-    print("1 Ingresar cargo".center(30,'-'))
-    print("2 Modificar cargo".center(30,'-'))
-    print("3 Eliminar  cargo".center(30,'-'))
-    print("4 Mostrar todos los cargos".center(30,'-'))
-    print("5 Volver al menú Principal".center(30,'-'))
+    print("1 Ingresar cargo".center(100,'-'))
+    print("2 Modificar cargo".center(100,'-'))
+    print("3 Eliminar  cargo".center(100,'-'))
+    print("4 Mostrar todos los cargos".center(100,'-'))
+    print("5 Volver al menú Principal".center(100,'-'))
     
-    opcion = input('ingrese una opción'.center(30,'-'))
+    opcion = input('ingrese una opción'.center(100,'-'))
     try:
         opcion = int(opcion)
         if opcion == 1:
@@ -44,8 +46,7 @@ def subMenuDos():
         if opcion == 3:
             validarDelCargo()
         if opcion == 4:
-            print('no hay nada aquí aún')
-            subMenuDos()
+            validarMostrarCargos()
         if opcion == 5:
             menuPrincipal()
         else:
@@ -61,32 +62,32 @@ def subMenuDos():
 
 
 def submenuTres():
-    print("6 Ingresar comuna".center(30,'-'))
-    print("7 Modificar comuna".center(30,'-'))
-    print("8 Eliminar comuna".center(30,'-'))
-    print("9 Mostrar todas las comunas".center(30,'-'))
-    print("10 Volver al menú principal".center(30,'-'))
+    print(" 6 Ingresar comuna".center(100,'-'))
+    print(" 7 Modificar comuna".center(100,'-'))
+    print(" 8 Eliminar comuna".center(100,'-'))
+    print(" 9 Mostrar todas las comunas".center(100,'-'))
+    print(" 10 Volver al menú principal".center(100,'-'))
 
-    opcion = input('ingrese una opción'.center(30,'-'))
+    opcion = input('ingrese una opción'.center(100,'-'))
 
     try:
         opcion = int(opcion)
         if opcion == 6:
-            validarAddCargo()
+            validateAddComuna()
         if opcion == 7:
-            validarUpdateCargo()
+            validateUpdateComuna()
         if opcion == 8:
-            validarDelCargo()
+            print('no hay nada aquí por ahora '.center(100,'-'))
+            submenuTres()
         if opcion == 9:
-            print('no hay nada aquí aún')
-            subMenuDos()
+            validateListarComunas()
         if opcion == 10:
             menuPrincipal()
     except ValueError:
         print('OPCIÓN INVÁLIDA , INGRESE OTRA POR FAVOR'.center(100,'-'))
         subMenuDos()
 
-
-
-
-menuPrincipal()
+#Esta es la función que llama al menú principal
+#a través de esta función se validará el usuario y la contraseña
+def inicial():
+    menuPrincipal()

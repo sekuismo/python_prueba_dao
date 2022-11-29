@@ -49,6 +49,11 @@ def validarDelCargo():
     except:
         print('no funcionó bien :(')
 
+def validarMostrarCargos():
+    cargodto = CargoDTO
+    cargodto.findAllCargos()
+
+
 
 
 

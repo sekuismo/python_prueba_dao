@@ -99,6 +99,46 @@ class DaoCargo:
                 conexion.closeConex()
         return mensaje
 
+    # def listarUsuarios(self):
+
+    #     c = self.getConex()
+    #     result = None
+    #     try:
+    #         cursor = c.getConex().cursor()
+    #         cursor.execute("select username, email, password, create_time from users")
+    #         result = cursor.fetchall()
+    #     except Exception as ex:
+    #         print(ex)
+    #     finally:
+    #         if c.getConex().is_connected():
+    #             c.closeConex()
+
+    #     return result
+
+    def findAllCargos(self):
+        sentencia_sql = "SELECT NUMEROCARGO, NOMBRECARGO FROM CARGO"
+        conexion = self.getConex()
+        try:
+            cursor = conexion.getConex().cursor(buffered=True)
+            cursor.execute(sentencia_sql)
+            conexion.getConex().commit()
+            resultado = cursor.fetchall()
+        except:
+            print(traceback.print_exc())
+            mensaje = "Problemas con la base de datos..vuelva a intentarlo"
+        finally:
+            if conexion.getConex().is_connected():
+                conexion.closeConex()
+             
+        return resultado
+
+
+
+
+
+
+
+
 
 #importante considerar que cada método recibe parámetros , los cuales son definidos
 # por el diagrama de clases , estos parámetros se obtienen a través de "inputs"
