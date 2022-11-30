@@ -1,5 +1,5 @@
 from controlador.dto_empleado import EmpleadoDTO
-
+#módulo de validación de empleados
 
 def listAll():
     print("Listado de Empleados")

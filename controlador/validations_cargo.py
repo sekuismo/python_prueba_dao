@@ -1,6 +1,6 @@
 from controlador.dto_cargo import CargoDTO
 
-#aquí van las validaciones de los cargos
+#Módulo de validaciones de los cargos 
 
 
 def validarFindUser():
@@ -52,42 +52,4 @@ def validarDelCargo():
 def validarMostrarCargos():
     cargodto = CargoDTO
     cargodto.findAllCargos()
-
-
-
-
-
-# def validarLogin():
-#     username = input("Ingrese nombre de usuario : ")
-#     clave = input("Ingrese contraseña : ")
-#     resultado = UserDTO().validarLogin(username, clave)
-#     return resultado
-
-#MENÚ PRINCIPAL PRUEBA 
-
-
-
-### para llegar al menu primero hay que loguearse
-
-# def inicial():
-
-#     while True:
-#         opc = menu()
-#         if opc == 1:
-#             listAll()
-#         elif opc == 2:
-#             validateAddUser()
-#         elif opc == 3:
-#             #validaDelUser() 
-#             pass
-#         elif opc == 4:
-#             validateUpdateUser()
-#         elif opc == 5:
-#             validateFindUser()
-#         else:
-#             break
-
-
-
-
 

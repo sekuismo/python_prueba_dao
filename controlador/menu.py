@@ -3,13 +3,14 @@ from controlador.validations_comuna import *
 # from controlador.validations_empleado import *
 
 
+
 def menuPrincipal():
     while True:
         print('Bienvenido al minimarket fenix \n \n'.center(100,' '))
         print("1 CRUD empleados".center(100,'-'))
         print("2 CRUD cargos".center(100,'-'))
         print("3 CRUD comunas".center(100,'-'))
-        print("4 SALIR".center(30),'-')
+        print("4 SALIR".center(100),'-')
 
         opcion =  input("Ingrese una opción : ")
         try:
@@ -23,10 +24,20 @@ def menuPrincipal():
             if opcion == 4:
                 break
             else:
-                print('no existe esa opción por ahora')
                 menuPrincipal()
         except ValueError:
-            print('INGRESE UNA OPCIÓN VÁLIDA')
+            print('\n')
+            print('\n')
+            print('\n')
+            print('\n')
+            print('INGRESE UNA OPCIÓN VÁLIDA'.center(100,' '))
+            print('\n')
+            print('\n')
+            print('\n')
+            print('\n')
+            menuPrincipal()
+        except KeyboardInterrupt:
+            print('ACCIÓN INDEBIDA!!!!'.center(100,'-'))
             menuPrincipal()
 
 
@@ -52,10 +63,18 @@ def subMenuDos():
         if opcion == 5:
             menuPrincipal()
         else:
-            print('no existe esa opción aún')
             subMenuDos()
     except ValueError:
         print('OPCIÓN INVÁLIDA , INGRESE OTRA POR FAVOR'.center(100,'-'))
+        subMenuDos()
+    except KeyboardInterrupt:
+        print('\n')
+        print('\n')
+        print('\n')
+        print('ACCIÓN INDEBIDA!!!!'.center(100,'-'))
+        print('\n')
+        print('\n')
+        print('\n')
         subMenuDos()
 
 
@@ -85,8 +104,29 @@ def submenuTres():
         if opcion == 10:
             menuPrincipal()
     except ValueError:
+        
+        print('\n')
+        print('\n')
+        print('\n')
+        print('\n')
         print('OPCIÓN INVÁLIDA , INGRESE OTRA POR FAVOR'.center(100,'-'))
+        print('\n')
+        print('\n')
+        print('\n')
+        print('\n')
         subMenuDos()
+    except KeyboardInterrupt:
+        print('\n')
+        print('\n')
+        print('\n')
+        print('\n')
+        print('ACCIÓN INDEBIDA , INGRESE OTRA POR FAVOR'.center(100,'-'))
+        print('\n')
+        print('\n')
+        print('\n')
+        print('\n')
+        submenuTres()
+
 
 #Esta es la función que llama al menú principal
 #a través de esta función se validará el usuario y la contraseña
