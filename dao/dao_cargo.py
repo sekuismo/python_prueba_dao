@@ -134,3 +134,12 @@ class DaoCargo:
 
 
 
+
+# Este código pertenece a la clase DaoCargo que se encarga de realizar operaciones CRUD (crear, leer, actualizar
+#  y borrar) en la tabla "Cargo" de una base de datos. La clase tiene un constructor que inicializa un objeto de la 
+#  clase Conex para establecer una conexión con la base de datos.
+
+# La clase tiene los métodos findCargo(), addCargo(), updateCargo(), delCargo(), listCargo(), findCargoByNombre() 
+# y findCargoByNumero(). Cada uno de estos métodos realiza una operación CRUD en la tabla "Cargo". Por ejemplo, 
+# el método findCargo() busca un cargo en la tabla dado su número y devuelve la información del mismo.
+#  En cambio, el método addCargo() agrega un nuevo cargo a la tabla dado su número y nombre.

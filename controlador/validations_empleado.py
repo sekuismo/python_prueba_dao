@@ -1,4 +1,5 @@
 from controlador.dto_empleado import EmpleadoDTO
+
 #módulo de validación de empleados
 
 def listAll():
@@ -9,114 +10,30 @@ def listAll():
             print(u)
     else:
         print("no hay resultados")
+#si es que no existe el idcargo ni el idcomuna habrá conflicto con llaves
+def validateAddEmpleado():
+    try:
+        idCargo = input('ingrese el id del cargo')
+        idComuna = input('ingrese el ID de la comuna')
+        idCargo = int(idCargo)
+        idComuna = int(idComuna)
+        run = input('ingrese el rut del empleado')
+        nombre = input('ingrese tan solo el nombre del empleado')
+        apellido = input('ingrese el apellido del empleado')
+        direccion= input('ingrese la dirección del empleado')
+        clave = input('ingrese  su clave')
+        correo = input('ingrese su correo')
+        empleado = EmpleadoDTO()
+        empleado.addEmpleado(idCargo,idComuna,run,nombre,apellido,direccion,clave,correo)
+    except:
+        print('algo muy malo pasó u.u')
 
-def validateFindEmpleado():
-    nombre = input("Ingrese el nombre del empleado a buscar : ")
-    if nombre == "":
-        print("Nombre de empleado incorrecto")
-        return validateFindEmpleado()
-    else:
-        resu = EmpleadoDTO().buscarEmpleado(nombre)
-        if resu is not None:
-            print(f"Resultado : {resu}")
-        else:
-            print("Empleado no encontrado")
+def validateDelEmpleado():
+    run = input('ingrese el rut de la persona a eliminar')
+    try:
+        empleado = EmpleadoDTO()
+        empleado.delEmpleado(run)
+    except:
+        print('no existe ese empleado al parecer :(')
 
-def validateUpdateEmpleado():
-    run = input("Ingrese el RUN del empleado a modificar: ")
-    if len(run) == 0:
-        print("Debe ingresar un RUN de empleado")
-        return validateUpdateEmpleado()
-    resu = EmpleadoDTO().buscarEmpleado(run)
-    if resu is not None:
-        print("Datos --> ", resu)
-        nombre = input("Ingrese nombre: ")
-        while (len(nombre) <= 0):
-            nombre = input("Ingrese un nombre válido: ")
-        apellido = input("Ingrese apellido: ")
-        while (len(apellido) <= 0):
-            apellido = input("Ingrese un apellido válido: ")
-        email = input("Ingrese email: ")
-        while (len(email) <= 0):
-            email = input("Ingrese un email válido: ")
-        clave = input("Ingrese clave: ")
-        while (len(clave) <= 0):
-            clave = input("Ingrese una clave válida: ")
-        direccion = input("Ingrese dirección: ")
-        while (len(direccion) <= 0):
-            direccion = input("Ingrese una dirección válida: ")
-        print(EmpleadoDTO().actualizarEmpleado(nombre, apellido, direccion, clave, email))
-    else:
-        print("Usuario no encontrado")
-
-def validateAddUser():
-    run = input("Ingrese RUN de usuario a incorporar: ")
-    if len(run) == 0:
-        print("Debe ingresar un nombre de usuario")
-        return validateAddUser()
-    resu = EmpleadoDTO().buscarEmpleado(run)
-    if resu is not None:
-        print("Datos existentes--> ", resu)
-    else:
-        nombre = input("Ingrese nombre: ")
-        while (len(nombre) <= 0):
-            nombre = input("Ingrese un nombre válido: ")
-        apellido = input("Ingrese apellido: ")
-        while (len(apellido) <= 0):
-            apellido = input("Ingrese un apellido válido: ")
-        email = input("Ingrese email: ")
-        while (len(email) <= 0):
-            email = input("Ingrese un email válido: ")
-        clave = input("Ingrese clave: ")
-        while (len(clave) <= 0):
-            clave = input("Ingrese una clave válida: ")
-        direccion = input("Ingrese dirección: ")
-        while (len(direccion) <= 0):
-            direccion = input("Ingrese una dirección válida: ")
-        print(EmpleadoDTO().agregarUsuario(run, nombre, apellido, cargoN = None, direccion, clave, email, comunaN = None))
-
-def validateDelUser():
-    run = input("Ingrese RUN de empleado a eliminar: ")
-    if len(run) == 0:
-        print("Debe ingresar un RUN de empleado")
-        return validateDelUser()
-    resu = EmpleadoDTO().buscarEmpleado(run)
-    if resu is not None:
-        print("Datos existentes--> ", resu)
-    else:
-        print(EmpleadoDTO().eliminarEmpleado(run))
-
-def validarLogin():
-    run = input("Ingrese RUN de usuario: ")
-    clave = input("Ingrese contraseña: ")
-    resultado = EmpleadoDTO().validarLogin(run, clave)
-    return resultado
-
-
-def menu():
-    print("1. Listar Usuarios")
-    print("2. Agregar Usuario")
-    print("3. Eliminar Usuario")
-    print("4. Actualizar Usuario")
-    print("5. Buscar Usuario")
-    print("6. Salir")
-    opc = int( input("Ingrese una opción : "))
-    return opc
-
-def inicial():
-
-    while True:
-        opc = menu()
-        if opc == 1:
-            listAll()
-        elif opc == 2:
-            validateAddEmpleado()
-        elif opc == 3:
-            validaDelUser()
-        elif opc == 4:
-            validateUpdateEmpleado()
-        elif opc == 5:
-            validateFindEmpleado()
-        else:
-            break
-
+    

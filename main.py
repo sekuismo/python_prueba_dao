@@ -1,5 +1,6 @@
 from controlador.menu import inicial
 
+
 # esta es la función que inicia todo el programa
 # están funcionando todos los métodos solicitados de comuna y de cargo,  sin embargo , 
 # ninguno tiene la validación de registro nulo

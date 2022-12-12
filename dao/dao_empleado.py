@@ -79,13 +79,18 @@ class daoEmpleado:
                 c.closeConex()
         return mensaje
 
-    def agregarEmpleado(self, empleado):
-        sql = "INSERT INTO EMPLEADO (IDCARGO, IDCOMUNA, RUN, NOMBRE, APELLIDO, DIRECCION, CLAVE, CORREO) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
+
+    # importante considerar select idcargo from cargo where nombre 
+    # así se puede ingresear el nombre del cargo y después hacer que retorne el id del cargo
+    #y ese id almacenarlo en la tabla empleado 
+    
+    def addEmpleado(self,idCargo,idComuna,run,nombre,apellido,direccion,clave,correo):
+        sql = "INSERT INTO EMPLEADO (IDCARGO, IDCOMUNA, RUN, NOMBRE, APELLIDO, DIRECCION, CLAVE, CORREO) VALUES ({0},{1},'{2}','{3}','{4}','{5}','{6}','{7}')".format(idCargo,idComuna,run,nombre,apellido,direccion,clave,correo)
         c = self.getConex()
         mensaje = ""
         try:
             cursor = c.getConex().cursor() # Falta la clase cargo pal método get codigo:
-            cursor.execute(sql, (empleado.getCargo().getCodigoCargo(), empleado.getComuna().getCodigoComuna(), empleado.getRunEmpleado(), empleado.getNombreEmpleado(), empleado.getApellidoEmpleado(), empleado.getDireccionEmpleado(), empleado.getClaveEmpleado(), empleado.getCorreoEmpleado()))
+            cursor.execute(sql)
             c.getConex().commit()
             filas = cursor.rowcount
             if filas > 0:
@@ -100,13 +105,13 @@ class daoEmpleado:
                 c.closeConex()
         return mensaje
 
-    def eliminarEmpleado(self, empleado):
-        sql = "DELETE FROM EMPLEADO WHERE RUN=%s"
+    def delEmpleado(self,run):
+        sql = "DELETE FROM EMPLEADO WHERE RUN= '{0}'".format(run)
         c = self.getConex()
         mensaje = ""
         try:
             cursor = c.getConex().cursor()
-            cursor.execute(sql, (empleado.getRunEmpleado(),))
+            cursor.execute(sql)
             c.getConex().commit()
             filas = cursor.rowcount
             if filas > 0:
@@ -121,3 +126,36 @@ class daoEmpleado:
                 c.closeConex()
         return mensaje
 
+
+
+
+
+
+
+
+
+
+# El error que se muestra en tu código indica que se ha producido un fallo al agregar o actualizar un registro en una tabla de la 
+# base de datos debido a una violación de la restricción de clave externa.
+
+# La restricción de clave externa es una característica de las bases de datos
+#  relacionales que se utiliza para asegurar la integridad de los datos.
+#   Esta restricción impide que se agreguen o actualicen registros en una
+#    tabla si los datos que se intentan agregar o actualizar violan la relación entre las tablas.
+
+# En este caso, el error se refiere a una restricción de clave externa en
+#  la tabla empleado, que tiene una columna llamada IDCARGO que se relaciona
+#   con la tabla cargo. La restricción de clave externa especifica que la 
+#   columna IDCARGO en la tabla empleado debe contener valores que existan
+#    en la columna IDCARGO en la tabla cargo. Esto significa que,
+#     si intentamos agregar o actualizar un registro en la tabla 
+#     empleado con un valor en la columna IDCARGO que no existe
+#      en la tabla cargo, se producirá un error.
+
+# Para solucionar este error, debes asegurarte de que el valor 
+# que estás intentando agregar o actualizar en la columna IDCARGO 
+# de la tabla empleado exista en la tabla cargo. Por ejemplo,
+#  si intentas agregar un nuevo empleado con un cargo que no
+#   existe en la tabla cargo, debes primero agregar el cargo 
+#   a la tabla cargo antes de agregar el empleado a la tabla empleado.
+#    Si necesitas más ayuda para solucionar este error, no dudes en preguntar.

@@ -1,44 +1,43 @@
 from controlador.validations_cargo import *
 from controlador.validations_comuna import *
+from controlador.validations_empleado import * 
 # from controlador.validations_empleado import *
 
 
 
-def menuPrincipal():
-    while True:
-        print('Bienvenido al minimarket fenix \n \n'.center(100,' '))
-        print("1 CRUD empleados".center(100,'-'))
-        print("2 CRUD cargos".center(100,'-'))
-        print("3 CRUD comunas".center(100,'-'))
-        print("4 SALIR".center(100),'-')
 
-        opcion =  input("Ingrese una opción : ")
-        try:
-            opcion = int(opcion)
-            if opcion == 1:
-                print('no hay nada aquí')
-            if opcion == 2:
-                subMenuDos()
-            if opcion == 3:
-                submenuTres()
-            if opcion == 4:
-                break
-            else:
-                menuPrincipal()
-        except ValueError:
-            print('\n')
-            print('\n')
-            print('\n')
-            print('\n')
-            print('INGRESE UNA OPCIÓN VÁLIDA'.center(100,' '))
-            print('\n')
-            print('\n')
-            print('\n')
-            print('\n')
-            menuPrincipal()
-        except KeyboardInterrupt:
-            print('ACCIÓN INDEBIDA!!!!'.center(100,'-'))
-            menuPrincipal()
+
+def subMenuUno():
+    print("1 Ingresar Empleado".center(100,'-'))
+    print("2 Eliminar  empleado".center(100,'-'))
+    print("3 Modificar Empleado".center(100,'-'))
+    print("4 Mostrar Empleados por cargo".center(100,'-'))
+    print("5 Mostrar Empleados por comuna".center(100,'-'))
+    print("6 Salir del sistema".center(100,'-'))
+    opcionUno = input('ingrese una opción')
+    try:
+        opcionUno = int(opcionUno)
+        if opcionUno == 1:
+            validateAddEmpleado()
+        elif opcionUno == 2:
+            validateDelEmpleado()
+        elif opcionUno == 3:
+            print('no hay nada aquí op3')
+        elif opcionUno == 4:
+            print('no hay nada aquí op4')
+        elif opcionUno == 5:
+            print('no hay nada aquí op5')
+        elif opcionUno == 6:
+            print('adios')
+
+    except:
+        print('ingrese un número válido!!')
+        print(f'ingresaste {opcionUno}')
+        subMenuUno()
+    
+
+
+
 
 
 
@@ -126,6 +125,43 @@ def submenuTres():
         print('\n')
         print('\n')
         submenuTres()
+
+
+def menuPrincipal():
+    while True:
+        print('Bienvenido al minimarket fenix \n \n'.center(100,' '))
+        print("1 CRUD empleados".center(100,'-'))
+        print("2 CRUD cargos".center(100,'-'))
+        print("3 CRUD comunas".center(100,'-'))
+        print("4 SALIR".center(100),'-')
+
+        opcion =  input("Ingrese una opción : ")
+        try:
+            opcion = int(opcion)
+            if opcion == 1:
+                subMenuUno()
+            if opcion == 2:
+                subMenuDos()
+            if opcion == 3:
+                submenuTres()
+            if opcion == 4:
+                break
+            else:
+                menuPrincipal()
+        except ValueError:
+            print('\n')
+            print('\n')
+            print('\n')
+            print('\n')
+            print('INGRESE UNA OPCIÓN VÁLIDA'.center(100,' '))
+            print('\n')
+            print('\n')
+            print('\n')
+            print('\n')
+            menuPrincipal()
+        except KeyboardInterrupt:
+            print('ACCIÓN INDEBIDA!!!!'.center(100,'-'))
+            menuPrincipal()
 
 
 #Esta es la función que llama al menú principal
