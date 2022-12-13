@@ -1,7 +1,7 @@
 from controlador.validations_cargo import *
 from controlador.validations_comuna import *
 from controlador.validations_empleado import * 
-# from controlador.validations_empleado import *
+
 
 
 
@@ -15,25 +15,25 @@ def subMenuUno():
     print("5 Mostrar Empleados por comuna".center(100,'-'))
     print("6 Salir del sistema".center(100,'-'))
     opcionUno = input('ingrese una opción')
-    try:
-        opcionUno = int(opcionUno)
-        if opcionUno == 1:
-            validateAddEmpleado()
-        elif opcionUno == 2:
-            validateDelEmpleado()
-        elif opcionUno == 3:
-            print('no hay nada aquí op3')
-        elif opcionUno == 4:
-            print('no hay nada aquí op4')
-        elif opcionUno == 5:
-            print('no hay nada aquí op5')
-        elif opcionUno == 6:
-            print('adios')
+    # try:
+    opcionUno = int(opcionUno)
+    if opcionUno == 1:
+        validateAddEmpleado()
+    elif opcionUno == 2:
+        validateDelEmpleado()
+    elif opcionUno == 3:
+        validateUpdateEmpleado()
+    elif opcionUno == 4:
+        print('no hay nada aquí op4')
+    elif opcionUno == 5:
+        print('no hay nada aquí op5')
+    elif opcionUno == 6:
+        print('adios')
 
-    except:
-        print('ingrese un número válido!!')
-        print(f'ingresaste {opcionUno}')
-        subMenuUno()
+    # except:
+    #     print('ingrese un número válido!!')
+    #     print(f'ingresaste {opcionUno}')
+    #     subMenuUno()
     
 
 

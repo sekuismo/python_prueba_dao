@@ -16,13 +16,19 @@ class EmpleadoDTO:
 
 
 
-    def addEmpleado(self,idCargo,idComuna,run,nombre,apellido,direccion,clave,correo): 
+    def addEmpleado(idCargo,idComuna,run,nombre,apellido,direccion,clave,correo): 
         daoempleado = daoEmpleado()
         resultado = daoempleado.addEmpleado(idCargo,idComuna,run,nombre,apellido,direccion,clave,correo)
         return resultado
 
-    def delEmpleado(self,run):
+    def delEmpleado(run):
         daoempleado = daoEmpleado()
-        daoempleado.delEmpleado(run)
+        return daoempleado.delEmpleado(run)
+        
+
+    def updateEmpleado(nombre,apellido,direccion,idCargo,idComuna,run):
+        daoempleado = daoEmpleado()
+        return daoempleado.updateEmpleado(nombre,apellido,direccion,idCargo,idComuna,run)
+        
     
 

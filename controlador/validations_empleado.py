@@ -23,7 +23,7 @@ def validateAddEmpleado():
         direccion= input('ingrese la dirección del empleado')
         clave = input('ingrese  su clave')
         correo = input('ingrese su correo')
-        empleado = EmpleadoDTO()
+        empleado = EmpleadoDTO
         empleado.addEmpleado(idCargo,idComuna,run,nombre,apellido,direccion,clave,correo)
     except:
         print('algo muy malo pasó u.u')
@@ -31,9 +31,32 @@ def validateAddEmpleado():
 def validateDelEmpleado():
     run = input('ingrese el rut de la persona a eliminar')
     try:
-        empleado = EmpleadoDTO()
-        empleado.delEmpleado(run)
+        empleado = EmpleadoDTO
+        #por alguna razón al instanciar esta clase con las llaves no funciona :(
+        mensaje = empleado.delEmpleado(run)
+        print(mensaje)
     except:
-        print('no existe ese empleado al parecer :(')
+        print('el empleado no existe :(')
+
+
+
+
+def validateUpdateEmpleado():
+    run = input('ingrese el rut del empleado a modificar')
+    nombre = input('ingrese el nombre a modificar')
+    apellido = input('ingrese el apellido a modificar')
+    direccion = input('ingrese la dirección a modificar')
+    idCargo = input('ingrese el id del cargo')
+    idComuna = input('ingrese el id de la comuna ')
+    
+    
+    idCargo = int(idCargo)
+    idComuna = int(idComuna)
+    empleado = EmpleadoDTO
+    mensaje = empleado.updateEmpleado(nombre,apellido,direccion,idCargo,idComuna,run)
+    print(mensaje)
+
+
+
 
     

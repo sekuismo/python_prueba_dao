@@ -58,13 +58,18 @@ class daoEmpleado:
                 c.closeConex()
         return resultado
 
-    def actualizarEmpleado(self, empleado): #  no se si modificar los IDs
-        sql = "UPDATE EMPLEADO SET NOMBRE = %s APELLIDO = %s DIRECCION = %s CLAVE = %s CORREO = %s WHERE RUN = %s"
+
+
+
+
+
+    def updateEmpleado(self,nombre,apellido,direccion,idCargo,idComuna,run): 
+        sql = "UPDATE EMPLEADO SET NOMBRE ='{0}' ,APELLIDO ='{1}' ,DIRECCION ='{2}' ,IDCARGO ={3} ,IDCOMUNA = {4}  WHERE RUN ='{5}'".format(nombre,apellido,direccion,idCargo,idComuna,run)
         c = self.getConex()
         mensaje = ""
         try:
             cursor = c.getConex().cursor()
-            cursor.execute(sql, (empleado.getNombreEmpleado(), empleado.getApellidoEmpleado(), empleado.getDireccionEmpleado(), empleado.getClaveEmpleado(), empleado.getCorreoEmpleado(), empleado.getRunEmpleado()))
+            cursor.execute(sql)
             c.getConex().commit()
             filas = cursor.rowcount
             if filas > 0:
@@ -106,7 +111,7 @@ class daoEmpleado:
         return mensaje
 
     def delEmpleado(self,run):
-        sql = "DELETE FROM EMPLEADO WHERE RUN= '{0}'".format(run)
+        sql = "DELETE FROM EMPLEADO WHERE RUN ='{0}' ".format(run)
         c = self.getConex()
         mensaje = ""
         try:
