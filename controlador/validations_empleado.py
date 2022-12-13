@@ -56,7 +56,25 @@ def validateUpdateEmpleado():
     mensaje = empleado.updateEmpleado(nombre,apellido,direccion,idCargo,idComuna,run)
     print(mensaje)
 
-
+def validateFindEmpleadoByComuna():
+    comuna = input('ingrese el nombre de la comuna')
+    try:
+        empleado = EmpleadoDTO
+        empleado.findEmpleadoByComuna(comuna)
+        empleados = empleado.findEmpleadoByComuna(comuna)
+        for datos in empleados:
+            run = datos[0]
+            nombre = datos[1]
+            apellido = datos[2]
+            cargo = datos[3]
+            direccion = datos[4]
+            correo = datos[5]
+            comuna = datos[6]
+            print("Run: {} \nNombre: {} \nApellido: {} \nCargo: {} \nDireccion: {} \nCorreo: {} \nComuna: {}".format(run, nombre, apellido, cargo, direccion, correo, comuna))
+            print('\n \n')
+    except:
+        print("no funka")
+       
 
 
     

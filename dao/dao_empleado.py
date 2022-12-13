@@ -130,13 +130,28 @@ class daoEmpleado:
             if c.getConex().is_connected():
                 c.closeConex()
         return mensaje
+        
 
 
 
+    def findEmpleadoByComuna(self,nombre_comuna):
+        sql = "SELECT e.RUN, e.NOMBRE, e.APELLIDO, c.NOMBRECARGO, e.DIRECCION, e.CORREO, co.NOMBRECOMUNA FROM EMPLEADO e JOIN CARGO c ON e.IDCARGO = c.IDCARGO JOIN COMUNA co ON e.IDCOMUNA = co.IDCOMUNA WHERE co.NOMBRECOMUNA ='{0}'".format(nombre_comuna)
+        c = self.getConex()
+        try:
+            cursor = c.getConex().cursor() # Falta la clase cargo pal método get codigo:
+            cursor.execute(sql)
+            resultado = cursor.fetchall()
+            c.getConex().commit()
 
 
 
-
+        except Exception as ex:
+            print(traceback.print_exc())
+            mensaje = "Problemas con la base de datos..vuelva a intentarlo"
+        finally:
+            if c.getConex().is_connected():
+                c.closeConex()
+        return resultado
 
 
 

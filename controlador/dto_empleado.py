@@ -29,6 +29,11 @@ class EmpleadoDTO:
     def updateEmpleado(nombre,apellido,direccion,idCargo,idComuna,run):
         daoempleado = daoEmpleado()
         return daoempleado.updateEmpleado(nombre,apellido,direccion,idCargo,idComuna,run)
+
+    def findEmpleadoByComuna(comuna):
+        daoempleado = daoEmpleado()
+        return daoempleado.findEmpleadoByComuna(comuna)
+
         
     
 

@@ -26,7 +26,7 @@ def subMenuUno():
     elif opcionUno == 4:
         print('no hay nada aquí op4')
     elif opcionUno == 5:
-        print('no hay nada aquí op5')
+        validateFindEmpleadoByComuna()
     elif opcionUno == 6:
         print('adios')
 
