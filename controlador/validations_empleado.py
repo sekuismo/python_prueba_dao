@@ -116,7 +116,7 @@ def validateUpdateEmpleado():
                             print(mensaje)
 
 def validateFindEmpleadoByComuna():
-    comuna = input('ingrese el nombre de la comuna')
+    comuna = input('ingrese el nombre de la comuna:   ')
     try:
         empleado = EmpleadoDTO
         empleado.findEmpleadoByComuna(comuna)
@@ -135,7 +135,7 @@ def validateFindEmpleadoByComuna():
         print("no funka")
 
 def validateFindEmpleadoByCargo():
-    cargo = input('ingrese el nombre del cargo a buscar')
+    cargo = input('ingrese el nombre del cargo a buscar:   ')
 
     empleado = EmpleadoDTO
     empleados = empleado.findEmpleadoByCargo(cargo)
@@ -148,7 +148,6 @@ def validateFindEmpleadoByCargo():
             direccion = datos[4]
             correo = datos[5]
             comuna = datos[6]
-            print(datos)
             print("Run: {} \nNombre: {} \nApellido: {} \nCargo: {} \nDireccion: {} \nCorreo: {} \nComuna: {}".format(run, nombre, apellido, cargo, direccion, correo, comuna))
             print('\n \n')
     except:

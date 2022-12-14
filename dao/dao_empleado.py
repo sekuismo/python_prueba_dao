@@ -11,36 +11,7 @@ class daoEmpleado:
     def getConex(self):
         return self.conn
 
-    def listarEmpleados(self): # No se si mostrar los IDs
-        c = self.getConex()
-        result = None
-        try:
-            cursor = c.getConex().cursor() # Tuve que mostrar la clave para usarla en el DTO
-            cursor.execute("SELECT RUN, NOMBRE, APELLIDO, DIRECCION, CLAVE, CORREO FROM EMPLEADO")
-            result = cursor.fetchall()
-        except Exception as ex:
-            print(ex)
-        finally:
-            if c.getConex().is_connected():
-                c.closeConex()
-        return result
 
-    def buscarEmpleado(self, empleado): # No se si mostrar los IDs, tuve que mostrar clave para DTO
-        sql = "SELECT RUN, NOMBRE, APELLIDO, DIRECCION, CLAVE, CORREO FROM EMPLEADO WHERE RUN = %s"
-        resultado = None
-        c = self.getConex()
-
-        try:
-            cursor = c.getConex().cursor()
-            cursor.execute(sql, (empleado.getRunEmpleado(),))
-            resultado = cursor.fetchone()
-
-        except Exception as ex:
-            print(traceback.print_exc())
-        finally:
-            if c.getConex().is_connected():
-                c.closeConex()
-        return resultado
 
     def validarLogin(self, empleado):
         sql = "SELECT RUN FROM EMPLEADO WHERE RUN = %s AND CLAVE = %s"
