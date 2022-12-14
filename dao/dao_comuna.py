@@ -57,7 +57,7 @@ class DaoComuna:
             if filas > 0:
                 mensaje ="Datos modificados satisfactoriamente"
             else:
-                mensaje="No se realizaron cambios"
+                mensaje="NO EXISTE ESA COMUNA"
         except Exception as ex:
             print(traceback.print_exc())
             mensaje = "Problemas con la base de datos..vuelva a intentarlo"
@@ -98,10 +98,10 @@ class DaoComuna:
             cursor = conexion.getConex().cursor()
             cursor.execute(sentencia_sql)
             conexion.getConex().commit()
-            mensaje = "Comuna eliminada   correctamente"
+            mensaje = "Comuna eliminada  correctamente"
         except:
             print(traceback.print_exc())
-            mensaje = "Problemas con la base de datos..vuelva a intent arlo"
+            mensaje = "NO EXISTE ESA COMUNA "
         finally:
             if conexion.getConex().is_connected():
                 conexion.closeConex()

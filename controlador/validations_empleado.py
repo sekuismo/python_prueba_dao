@@ -13,6 +13,7 @@ def listAll():
 #si es que no existe el idcargo ni el idcomuna habrá conflicto con llaves
 #Está validado que ningún campo esté vacío
 def validateAddEmpleado():
+    print("ES OBLIGATORIO QUE AL INGRESAR AL EMPLEADO EL ID DEL CARGO Y EL ID DE LA COMUNA EXISTAN".center(50,'-'))
     try:
         idCargo = input('ingrese el id del cargo')
         if idCargo == "":
@@ -56,8 +57,9 @@ def validateAddEmpleado():
                                         validateAddEmpleado()
                                     else:
                                         empleado = EmpleadoDTO
-                                        empleado.addEmpleado(idCargo,idComuna,run,nombre,apellido,direccion,clave,correo)
-    except:
+                                        resultado = empleado.addEmpleado(idCargo,idComuna,run,nombre,apellido,direccion,clave,correo)
+                                        print(resultado)
+    except:                             
         print('algo muy malo pasó u.u')
 
 #validación realizada
@@ -121,16 +123,20 @@ def validateFindEmpleadoByComuna():
         empleado = EmpleadoDTO
         empleado.findEmpleadoByComuna(comuna)
         empleados = empleado.findEmpleadoByComuna(comuna)
-        for datos in empleados:
-            run = datos[0]
-            nombre = datos[1]
-            apellido = datos[2]
-            cargo = datos[3]
-            direccion = datos[4]
-            correo = datos[5]
-            comuna = datos[6]
-            print("Run: {} \nNombre: {} \nApellido: {} \nCargo: {} \nDireccion: {} \nCorreo: {} \nComuna: {}".format(run, nombre, apellido, cargo, direccion, correo, comuna))
-            print('\n \n')
+        #si es que es una lista vacía significa que la BD no devolvió nada 
+        if empleados == []:
+            print('No existen empleados en esa comuna')
+        else:
+            for datos in empleados:
+                run = datos[0]
+                nombre = datos[1]
+                apellido = datos[2]
+                cargo = datos[3]
+                direccion = datos[4]
+                correo = datos[5]
+                comuna = datos[6]
+                print("Run: {} \nNombre: {} \nApellido: {} \nCargo: {} \nDireccion: {} \nCorreo: {} \nComuna: {}".format(run, nombre, apellido, cargo, direccion, correo, comuna))
+                print('\n \n')
     except:
         print("no funka")
 
@@ -139,19 +145,23 @@ def validateFindEmpleadoByCargo():
 
     empleado = EmpleadoDTO
     empleados = empleado.findEmpleadoByCargo(cargo)
-    try:
-        for datos in empleados:
-            run = datos[0]
-            nombre = datos[1]
-            apellido = datos[2]
-            cargo = datos[3]
-            direccion = datos[4]
-            correo = datos[5]
-            comuna = datos[6]
-            print("Run: {} \nNombre: {} \nApellido: {} \nCargo: {} \nDireccion: {} \nCorreo: {} \nComuna: {}".format(run, nombre, apellido, cargo, direccion, correo, comuna))
-            print('\n \n')
-    except:
-        pass
+    #si es que es una lista vacía significa que la BD no devolvió nada 
+    if empleados ==[]:
+        print('no existen empleados para ese cargo o no existe el cargo')
+    else:
+        try:
+            for datos in empleados:
+                run = datos[0]
+                nombre = datos[1]
+                apellido = datos[2]
+                cargo = datos[3]
+                direccion = datos[4]
+                correo = datos[5]
+                comuna = datos[6]
+                print("Run: {} \nNombre: {} \nApellido: {} \nCargo: {} \nDireccion: {} \nCorreo: {} \nComuna: {}".format(run, nombre, apellido, cargo, direccion, correo, comuna))
+                print('\n \n')
+        except:
+            pass
 
        
 

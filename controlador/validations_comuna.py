@@ -85,6 +85,6 @@ def validateDelComuna():
             num_comuna = int(num_comuna)
             dtoComuna = ComunaDTO()
             resultado = dtoComuna.delComuna(num_comuna)
-            print(resultado)
+            
         except:
             print('algo salió mal')

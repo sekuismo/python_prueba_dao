@@ -46,10 +46,10 @@ class daoEmpleado:
             if filas > 0:
                 mensaje = "Datos modificados satisfactoriamente"
             else:
-                mensaje= "No se realizaron cambios"
+                mensaje="NO EXISTE ESE EMPLEADO" 
         except Exception as ex:
-            print(traceback.print_exc())
-            mensaje = "Problemas con la base de datos..vuelva a intentarlo"
+            # print(traceback.print_exc())
+            mensaje = "No existe o el ID del cargo o el ID de la comuna"
         finally:
             if c.getConex().is_connected():
                 c.closeConex()
@@ -74,8 +74,8 @@ class daoEmpleado:
             else:
                 mensaje="No se realizaron cambios" 
         except Exception as ex:
-            print(traceback.print_exc())
-            mensaje = "Problemas con la base de datos..vuelva a intentarlo"
+            # print(traceback.print_exc())
+            mensaje = "NO PUEDE INGRESAR UN EMPLEADO CON UN ID DE CARGO O UN ID DE COMUNA QUE NO EXISTA"
         finally:
             if c.getConex().is_connected():
                 c.closeConex()
@@ -93,7 +93,7 @@ class daoEmpleado:
             if filas > 0:
                 mensaje ="Eliminado satisfactoriamente"
             else:
-                mensaje="No se realizaron cambios" 
+                mensaje="NO EXISTE ESE EMPLEADO" 
         except Exception as ex:
             print(traceback.print_exc())
             mensaje = "Problemas con la base de datos..vuelva a intentarlo"

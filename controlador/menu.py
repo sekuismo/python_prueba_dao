@@ -13,7 +13,7 @@ def subMenuUno():
     print("3 Modificar Empleado".center(100,'-'))
     print("4 Mostrar Empleados por cargo".center(100,'-'))
     print("5 Mostrar Empleados por comuna".center(100,'-'))
-    print("6 Salir del sistema".center(100,'-'))
+    print("6 Volver al Menú Principal".center(100,'-'))
     opcionUno = input('ingrese una opción')
     # try:
     opcionUno = int(opcionUno)
@@ -28,7 +28,8 @@ def subMenuUno():
     elif opcionUno == 5:
         validateFindEmpleadoByComuna()
     elif opcionUno == 6:
-        print('adios')
+        menuPrincipal()
+        
 
     # except:
     #     print('ingrese un número válido!!')

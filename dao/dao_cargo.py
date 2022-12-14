@@ -48,8 +48,8 @@ class DaoCargo:
                 mensaje="No se realizaron cambios"
         except Exception as ex:
             print(traceback.print_exc())
-            mensaje = "Problemas con la base de datos..vuelva a intent arlo"
-            print('algo no funciona wm')
+            mensaje = "PROBLEMAS CON LA BASE DE DATOS"
+
         finally:
             if conexion.getConex().is_connected():
                 conexion.closeConex()
@@ -72,7 +72,7 @@ class DaoCargo:
             if filas > 0:
                 mensaje ="Actualizado correctamente!"
             else:
-                mensaje="No se realizaron cambios"
+                mensaje="NO EXISTE ESE CARGO"
         except Exception as ex:
             print(traceback.print_exc())
             mensaje = "Problemas con la base de datos...  vuelva a intentarlo"
@@ -93,7 +93,7 @@ class DaoCargo:
             mensaje = "eliminado correctamente"
         except:
             print(traceback.print_exc())
-            mensaje = "Problemas con la base de datos..vuelva a intent arlo"
+            mensaje = "NO EXISTE ESE CARGO "
         finally:
             if conexion.getConex().is_connected():
                 conexion.closeConex()
@@ -126,20 +126,3 @@ class DaoCargo:
 
 
 
-#importante considerar que cada método recibe parámetros , los cuales son definidos
-# por el diagrama de clases , estos parámetros se obtienen a través de "inputs"
-# y se escriben en el módulo validaciones 
-# para que al ser validados sean llamados por el DTO de cada clase
-#el mismo DTO es quien imprime la clase a través de cargar los datos 
-
-
-
-
-# Este código pertenece a la clase DaoCargo que se encarga de realizar operaciones CRUD (crear, leer, actualizar
-#  y borrar) en la tabla "Cargo" de una base de datos. La clase tiene un constructor que inicializa un objeto de la 
-#  clase Conex para establecer una conexión con la base de datos.
-
-# La clase tiene los métodos findCargo(), addCargo(), updateCargo(), delCargo(), listCargo(), findCargoByNombre() 
-# y findCargoByNumero(). Cada uno de estos métodos realiza una operación CRUD en la tabla "Cargo". Por ejemplo, 
-# el método findCargo() busca un cargo en la tabla dado su número y devuelve la información del mismo.
-#  En cambio, el método addCargo() agrega un nuevo cargo a la tabla dado su número y nombre.

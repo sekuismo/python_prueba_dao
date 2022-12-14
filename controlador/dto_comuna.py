@@ -35,6 +35,7 @@ class ComunaDTO:
         return resultado
     def delComuna(self,num_comuna):
         daocomuna = DaoComuna()
-        daocomuna.delComuna(num_comuna)
+        resultado = daocomuna.delComuna(num_comuna)
+        print(resultado)
 
     
