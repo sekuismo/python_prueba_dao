@@ -24,7 +24,7 @@ def subMenuUno():
     elif opcionUno == 3:
         validateUpdateEmpleado()
     elif opcionUno == 4:
-        print('no hay nada aquí op4')
+        validateFindEmpleadoByCargo()
     elif opcionUno == 5:
         validateFindEmpleadoByComuna()
     elif opcionUno == 6:

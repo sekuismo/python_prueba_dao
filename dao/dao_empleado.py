@@ -154,28 +154,23 @@ class daoEmpleado:
         return resultado
 
 
+    def findEmpleadoByCargo(self,nombre_cargo):
+        resultado = None
+        try:
+            sql ="SELECT e.RUN, e.NOMBRE, e.APELLIDO, c.NOMBRECARGO, e.DIRECCION, e.CORREO, co.NOMBRECOMUNA FROM EMPLEADO e INNER JOIN CARGO c ON e.IDCARGO = c.IDCARGO INNER JOIN COMUNA co ON e.IDCOMUNA = co.IDCOMUNA WHERE c.NOMBRECARGO ='{0}' ".format(nombre_cargo)
+            
+            c = self.getConex()
+            cursor = c.getConex().cursor() 
+            cursor.execute(sql)
+            resultado = cursor.fetchall()
+            c.getConex().commit()
 
-# El error que se muestra en tu código indica que se ha producido un fallo al agregar o actualizar un registro en una tabla de la 
-# base de datos debido a una violación de la restricción de clave externa.
+        except Exception as ex:
+            print(ex)
+        finally:
+            if c.getConex().is_connected():
+                c.closeConex()
+            return resultado
 
-# La restricción de clave externa es una característica de las bases de datos
-#  relacionales que se utiliza para asegurar la integridad de los datos.
-#   Esta restricción impide que se agreguen o actualicen registros en una
-#    tabla si los datos que se intentan agregar o actualizar violan la relación entre las tablas.
 
-# En este caso, el error se refiere a una restricción de clave externa en
-#  la tabla empleado, que tiene una columna llamada IDCARGO que se relaciona
-#   con la tabla cargo. La restricción de clave externa especifica que la 
-#   columna IDCARGO en la tabla empleado debe contener valores que existan
-#    en la columna IDCARGO en la tabla cargo. Esto significa que,
-#     si intentamos agregar o actualizar un registro en la tabla 
-#     empleado con un valor en la columna IDCARGO que no existe
-#      en la tabla cargo, se producirá un error.
 
-# Para solucionar este error, debes asegurarte de que el valor 
-# que estás intentando agregar o actualizar en la columna IDCARGO 
-# de la tabla empleado exista en la tabla cargo. Por ejemplo,
-#  si intentas agregar un nuevo empleado con un cargo que no
-#   existe en la tabla cargo, debes primero agregar el cargo 
-#   a la tabla cargo antes de agregar el empleado a la tabla empleado.
-#    Si necesitas más ayuda para solucionar este error, no dudes en preguntar.

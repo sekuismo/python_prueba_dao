@@ -12,14 +12,12 @@ inicial()
 
 
 #TRABAJO REALIZADO POR :
-#MARCIAL DÍAZ
 #JORGE HERNÁNDEZ
 #ESTEBAN MUÑOZ
 
-# camelCase
-#snake_case
-#SCREAMIN_SNAKE_CASE
-#PascalCase  
+
+#Todos los métodos de la clase empleado  están funcionando sin embargo faltan algunas validaciones
+#
 
 
 
